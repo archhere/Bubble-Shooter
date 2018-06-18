@@ -34,7 +34,7 @@ In Bubble-Shooter, there will be :
   
   #### Weekend:
 
- * Create the basic setup and generate sprites using canvas. Do some research on collisions and explosions (popping action of the bubble) in JS. 
+ * Create the basic setup and generate sprites using canvas. Do some research on collisions,sprite creation, animation and explosions (popping action of the bubble) in JS. 
  * Try to create a grid setup for the game
 
   #### Day 1:
