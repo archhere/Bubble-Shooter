@@ -19,7 +19,7 @@ In Bubble-Shooter, there will be :
  
  Bubble-shooter is a single screen app. The screen will contain a modal with the game rules and nav links to the Github, my LinkedIn.The player will target the bubbles with mouse movements and shoot with a mouse click. 
  
- ![](https://res.cloudinary.com/archhere/image/upload/v1529284039/Screen_Shot_2018-06-17_at_6.04.02_PM.png)
+ ![](https://res.cloudinary.com/archhere/image/upload/v1529286557/Screen_Shot_2018-06-17_at_5.19.28_PM.png)
  
  ### Architecture and Technologies
  
