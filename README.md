@@ -1,4 +1,4 @@
-# Bubble-Shooter
+# Bouncing Bubble Shooter
 
 [Live Demo](https://github.com/archhere)
 
