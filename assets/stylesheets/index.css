@@ -1,0 +1,17 @@
+canvas {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 5px solid black;
+  background: black;
+}
+
+body{
+  margin: 0;
+}
+
+
+#hero{
+  color: "red";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
