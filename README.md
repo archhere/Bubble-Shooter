@@ -1,6 +1,6 @@
 # Bubble Shooter
 
-[Live Demo](https://github.com/archhere)
+[Live Demo](https://archhere.github.io/Bubble-Shooter/)
 
 ### Background and Overview
 
@@ -18,7 +18,10 @@ In Bubble-Shooter, there will be :
  ### Wireframes
  
  Bubble-shooter is a single screen app. The screen will contain a modal with the game rules and nav links to the Github, my LinkedIn.The player can move left and right to shoot the bubbles. 
+  
+![](https://res.cloudinary.com/archhere/image/upload/v1529388733/Untitled_Diagram.jpg)
  
+![](https://res.cloudinary.com/archhere/image/upload/v1529468064/Screen_Shot_2018-06-19_at_9.13.42_PM.png)
  
  
  ### Architecture and Technologies
