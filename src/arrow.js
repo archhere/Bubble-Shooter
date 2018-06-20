@@ -1,3 +1,5 @@
+// import UtilCollision from './util'
+
 class Arrow{
     constructor(){
         this.x = 0;
@@ -48,6 +50,11 @@ class Arrow{
         ctx.restore();
 
     }
+
+
+ //    collidedWith(other){
+ //        return Util(this, other);
+ // }
 }
 
 

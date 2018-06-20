@@ -1,5 +1,5 @@
 import {arr} from '../index.js';
-
+// import UtilCollision from './util';
 
 
 const FRAME_LIMIT = 2;
@@ -7,10 +7,11 @@ const FRAME_LIMIT = 2;
 class Hero{
   constructor(canvas,ctx){
 
-    // this.lives = 3;
+    this.lives = 1;
     this.width = 56;
     this.height = 47;
     // this.game = game;
+    this.hit = false;
     this.posX = 400;
     this.posY = 544;
     this.frame = 0;
@@ -21,10 +22,10 @@ class Hero{
     this.sprite.src = "player.png";
     this.img = "../assets/images/player.png";
     this.framepic = 111;
+    this.points = 0;
 
 
-    // this.img = new Image();
-    // this.img.src = "/../assets/player.png";
+
     document.addEventListener("keydown", (e)=>(this.move(e)), false);
     document.addEventListener("keyup", (e)=>(this.move(e)), false);
     document.addEventListener("keypress", (e)=>(this.shoot(e)), false);
@@ -99,41 +100,45 @@ shoot(e){
 
 }
 
-// move(){
-//   // console.log("move" ,this)
-//   if (this.rightMove){
-//
-//     this.posX++;
-//     // this.draw(this.images('/../assets/images/right1.gif'),this.width*this.frame);
-//   } else if (this.leftMove){
-//     this.posY--;
-//     // this.draw(this.images('/../assets/images/left.gif'),this.width*this.frame);
-//   }
-//   // this.frame = (this.frame + 1) % FRAME_LIMIT;
-// }
-
-
-
 draw(){
-  this.ctx.drawImage(this.sprite,0,this.framepic,this.width,this.height,this.posX,this.posY,this.width,this.height);
-  // this.ctx.drawImage(
-  //   this.sprite,
-  //   this.frame * this.width / this.numberOfFrames,
-  //   ,0,this.width,this.height,this.posX,this.posY,this.width,this.height);
+  this.ctx.drawImage(
+    this.sprite,0,this.framepic,
+    this.width,this.height,this.posX,
+    this.posY,this.width,this.height);
 }
 
-doesCollideWith(bubble){
-  for(let i = this.posX; i < (this.height + this.posX); i++) {
-    if (bubble.checkEdgeCollision(i, this.posY)) {
-      return true;
-  }
-}
 
-for (let i = this.posY; i < this.posY + this.height; i++) {
-  if (bubble.checkEdgeCollision(this.posX, i) || bubble.checkEdgeCollision(this.posX + this.width, i)) {
-        return true;
-      }
+intersects(ball) {
+        let boundingBoxHalf = this.width/2 - 20;
+        let ballR = ball.currentRadius;
+        let horizontalDist = Math.abs(ball.x - (this.posX + boundingBoxHalf));
+        let verticalDist = Math.abs(ball.y - (this.posY + this.height / 2));
+
+        if (horizontalDist > boundingBoxHalf + ballR) {
+            return false;
+        } else if (verticalDist > (this.height / 2) + ballR) {
+            return false;
+        }
+
+        if (horizontalDist <= boundingBoxHalf) {
+            return true;
+        } else if (verticalDist <= this.height / 2) {
+            return true;
+        }
+
+
+        let dX = horizontalDist - boundingBoxHalf;
+        let dY = verticalDist - this.height / 2;
+
+        if (dX * dX + dY * dY <= (ballR * ballR)) {
+            return true;
+        } else {
+            return false;
+        }
     }
-  }
+
+
+
+
 }
 export default Hero;
