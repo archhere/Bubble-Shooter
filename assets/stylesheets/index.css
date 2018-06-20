@@ -1,7 +1,8 @@
 canvas {
   background-color: rgba(0, 0, 0, 0.6);
   border: 5px solid black;
-  background: black;
+  /* background: url('https://res.cloudinary.com/archhere/image/upload/v1529465925/2d-game-backgrounds-10024_imgs_10024_4.jpg'); */
+  background: url('https://res.cloudinary.com/archhere/image/upload/v1529467160/xaxas.jpg');
 }
 
 body{

@@ -29,7 +29,7 @@ class Ball{
     } else {
       this.dy += gravity;
     }
-    if(this.x + this.radius + this.dx > canvas.height || this.x - this.radius <= 0){
+    if(this.x + this.radius + this.dx+1 > canvas.height || this.x - this.radius-1 <= 0){
       this.dx = -this.dx;
     }
     this.x += this.dx;

@@ -1,7 +1,8 @@
 
 
 const Bubbles = require("./src/bubbles.js");
-const Hero = require('./src/hero.js');
+import Hero from './src/hero.js';
+import Arrow from './src/arrow.js';
 
 
 const canvas = document.getElementById("canvas");
@@ -19,6 +20,9 @@ let colors = [
   '#00D49D',
 ];
 
+
+
+
 function randomIntFromRange(min,max){
   return Math.floor(Math.random() * (max-min+1) + min);
 }
@@ -30,26 +34,44 @@ const randomColor = (arr) => (
 
 let bubbleArray;
 let bubble;
-let circle1;
-
+let hero;
+let IsGameOver=false;
+export const arr = new Arrow();
 
 const init = () => {
   bubbleArray = [];
   for(let i=0; i<5; i++) {
-    bubbleArray.push(new Bubbles(randomIntFromRange(20,canvas.width),20,randomIntFromRange(-2,2),randomIntFromRange(-2,2),randomIntFromRange(20,40),randomColor(colors)))
+    bubbleArray.push(new Bubbles(randomIntFromRange(20,canvas.width),20,randomIntFromRange(-2,2),randomIntFromRange(-2,2),randomIntFromRange(20,40),randomColor(colors)));
   }
-  console.log(bubbleArray);
+  hero = new Hero(canvas,ctx);
 };
 
 
 
 function animate(){
-  requestAnimationFrame(animate);
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  bubbleArray.forEach(balls => balls.update(canvas,ctx));
+
+  if (!IsGameOver){
+    requestAnimationFrame(animate);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    bubbleArray.forEach(balls => balls.update(canvas,ctx));
+    arr.draw(ctx);
+    arr.update();
+    hero.draw();
+  }
+
 }
 
 init();
 animate();
+
+
+
+
+
+
+
+
+
+
 
 // let animateInterval = setInterval(animate,30);
