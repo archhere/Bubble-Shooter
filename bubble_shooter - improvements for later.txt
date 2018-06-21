@@ -12,10 +12,6 @@ let innerWidth = 800;
 let innerHeight = 600;
 canvas.width = innerWidth;
 canvas.height = innerHeight;
-addEventListener("keydown",  (e)=>(startGame(e)), false);
-document.addEventListener("keydown", (e)=>(hero.move(e)), false);
-document.addEventListener("keyup", (e)=>(hero.move(e)), false);
-document.addEventListener("keypress", (e)=>(hero.shoot(e)), false);
 
 let colors = [
   '#FF005D',
@@ -24,6 +20,9 @@ let colors = [
   '#00D49D',
   '#00D49D',
 ];
+
+
+
 
 function randomIntFromRange(min,max){
   return Math.floor(Math.random() * (max-min+1) + min);
@@ -40,12 +39,39 @@ export let arr = new Arrow(canvas);
 export let hero;
 let IsGameOver=false;
 let backgrd = new Image();
+let images = ['./level1.jpg','./level2.jpg','./level3.jpg'];
+let levels = {
+  currentLevel: 1,
+  countofbubbles: 1,
+  bkgrimg: images[0]
+};
+let currentLevel = 1;
 let image = "./level1.jpg";
 backgrd.src = image;
 
-const init = () => {
+function gameWon(c){
+    c.font = "30px serif";
+    c.fillStyle = "red";
+    c.fillText('You won! Press enter to go to the next level' , 100 , 100);
+    addEventListener("keydown",  (e)=>(startGame(e)), false);
+  }
+
+
+// function gotolevels(e){
+//     if (e.keyCode === 13){
+//       hero.lives = 3;
+//       currentLevel++;
+//       hero = new Hero(canvas,ctx);
+//       levels(currentLevel);
+//       init();
+//       arr = new Arrow();
+//       animate();
+//     }
+// }
+
+const init = (Level) => {
   bubbleArray = [];
-  for(let i=0; i < 1; i++) {
+  for(let i=0; i < Level.countofbubbles; i++) {
     console.log("created new bubbles");
     bubbleArray.push(new Bubbles(
       randomIntFromRange(20,canvas.width-20),
@@ -73,17 +99,11 @@ function getScore(c){
 function GameOver(c){
   c.font = "30px serif";
   c.fillStyle = "red";
-  c.fillText(`You lost! You scored ${hero.points}` , 300 , 300);
+  c.fillText(`Game Over! You scored ${hero.points}` , 300 , 300);
   c.fillText('Press enter to play again', 300 , 400);
 }
 
-function gameWon(c){
-    c.font = "30px serif";
-    c.fillStyle = "red";
-    c.fillText(`You won! Your score was ${hero.points}. Press enter to play again` , 100 , 400);
-  }
-
-
+addEventListener("keydown",  (e)=>(startGame(e)), false);
 
 function loseLife(){
     if (hero.lives > 0) {
@@ -96,13 +116,34 @@ function loseLife(){
 
 function startGame(e){
     if (e.keyCode === 13){
-        init();
+      if (won === false) {
+        levels.currentLevel = 1;
+        levels.countofbubbles = 1;
+        init(levels);
         IsGameOver = false;
         hero = new Hero(canvas,ctx,0);
         arr = new Arrow();
         animate();
+
       }
+      else {
+        won = false;
+        levels.currentLevel++;
+        levels.countofbubbles++;
+        // init(levels);
+        IsGameOver = false;
+        let temp = hero.points;
+        hero.document.removeEventListener("keydown", false);
+        hero.document.removeEventListener("keyup", false);
+        hero.document.removeEventListener("keypress", false);
+        hero = new Hero(canvas,ctx,temp);
+        arr = new Arrow();
+        animate();
+      }
+
+    }
 }
+
 
 function animate(){
 
@@ -124,7 +165,7 @@ function animate(){
         }
         if(hero.hit){
           loseLife();
-          if (IsGameOver === false) init();
+          if (IsGameOver === false) init(levels);
           break;
         }
       }
@@ -144,8 +185,10 @@ function animate(){
   else{
     GameOver(ctx);
   }
+
 }
-init();
+
+init(levels);
 animate();
 
 

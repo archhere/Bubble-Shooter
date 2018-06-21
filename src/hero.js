@@ -1,5 +1,5 @@
 import {arr} from '../index.js';
-// import UtilCollision from './util';
+
 
 
 
@@ -8,10 +8,9 @@ const FRAME_LIMIT = 2;
 class Hero{
   constructor(canvas,ctx,points){
 
-    this.lives = 1;
+    this.lives = 3;
     this.width = 56;
     this.height = 55;
-    // this.game = game;
     this.hit = false;
     this.posX = canvas.width/2;
     this.posY = canvas.height-this.height;
@@ -21,74 +20,18 @@ class Hero{
     this.ctx = ctx;
     this.sprite = new Image();
     this.sprite.src = "player.png";
-    // this.img = "../assets/images/player.png";
     this.framepic = 111;
     this.points = points;
     this.lifeImg = new Image();
     this.lifeImg.src = 'heart1.png';
 
-
-    document.addEventListener("keydown", (e)=>(this.move(e)), false);
-    document.addEventListener("keyup", (e)=>(this.move(e)), false);
-    document.addEventListener("keypress", (e)=>(this.shoot(e)), false);
-
-    // document.addEventListener("keydown", this.keyDownHandler, false);
-    // document.addEventListener("keyup", this.keyUpHandler, false);
-    // setInterval(()=>(this.move()),500);
-    // this.isShooting = false;
-    // this.isHit = false;
-    // this.keyDownHandler = this.keyDownHandler.bind(this)
-
-
+    
   }
 
 
 
 
-//   loseLife(){
-//     if (this.lives > 0) {
-//       this.lives-- ;
-//       this.game.reset();
-//   } else {
-//     this.game.gameOver();
-//   }
-// }
-// images(source){
-//   let img = new Image();
-//   img.src = source;
-//   // return img;
-// }
-
 //
-// keyDownHandler(e){
-//   if(e.keyCode === 39) {
-//     this.rightMove = true;
-//
-//   }
-//   else if(e.keyCode === 37) {
-//     this.leftMove = true;
-//   }
-// }
-//
-// keyUpHandler(e){
-//   if(e.keyCode === 39) {
-//     this.rightMove = false;
-//   }
-//   else if(e.keyCode === 37) {
-//     this.leftMove = false;
-//   }
-// }
-
-// draw(ctx) {
-//
-//         let heartX = 755;
-//         for (let i = 1; i <= this.life; i++) {
-//             ctx.drawImage(this.lifeImg,heartX, 10);
-//             heartX -= 35;
-//         }
-
-
-
 move(e){
   if(e.keyCode === 39) {
     if(this.posX<=770){

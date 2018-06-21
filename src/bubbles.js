@@ -1,7 +1,7 @@
 import Hero from './hero.js';
 import Arrow from './arrow.js';
 import {hero} from '../index.js';
-// import UtilCollision from './util';
+
 
 //initialize
 
@@ -63,14 +63,6 @@ class Ball{
   randomIntFromRange(min,max){
     return Math.floor(Math.random() * (max-min+1) + min);
   }
-
-
-
-//
-// pop(){
-//   BubbleTrouble.Sounds.popSound.play();
-//   this.radius > minRadius ? this.split() : this.game.remove(this);
-// }
 
 
 shotByArrow(arrow) {

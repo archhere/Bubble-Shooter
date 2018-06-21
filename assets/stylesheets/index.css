@@ -5,6 +5,7 @@ canvas {
   /* background: url('https://res.cloudinary.com/archhere/image/upload/v1529465925/2d-game-backgrounds-10024_imgs_10024_4.jpg'); */
   /* background: url('https://res.cloudinary.com/archhere/image/upload/v1529467160/xaxas.jpg'); */
   left: 50px;
+  width: 70%
 }
 
 body{
@@ -19,6 +20,7 @@ body{
   justify-content: center;
   align-items: center;
   border-radius: 5px;
+  width: 70%;
   /* background: black;
   color:white; */
 }
