@@ -1,7 +1,7 @@
 // import UtilCollision from './util'
 
 class Arrow{
-    constructor(){
+    constructor(canvas){
         this.x = 0;
         this.y = 600;
         this.liveArr = false;

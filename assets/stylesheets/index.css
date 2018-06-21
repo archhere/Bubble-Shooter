@@ -1,18 +1,55 @@
 canvas {
-  background-color: rgba(0, 0, 0, 0.6);
+  /* background-color: rgba(0, 0, 0, 0.6); */
   border: 5px solid black;
+  border-radius: 5px;
   /* background: url('https://res.cloudinary.com/archhere/image/upload/v1529465925/2d-game-backgrounds-10024_imgs_10024_4.jpg'); */
-  background: url('https://res.cloudinary.com/archhere/image/upload/v1529467160/xaxas.jpg');
+  /* background: url('https://res.cloudinary.com/archhere/image/upload/v1529467160/xaxas.jpg'); */
+  left: 50px;
 }
 
 body{
-  margin: 0;
+  margin: 5;
+}
+
+.outer{
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  /* background: black;
+  color:white; */
+}
+
+.i{
+  color: red;
 }
 
 
-#hero{
+/* #hero{
   color: "red";
   width: 20px;
   height: 20px;
   position: absolute;
+} */
+
+
+#github img{
+  color: red;
+  width: 30px;
+  height: 30px;
+
+}
+
+#linkedin img{
+  color: red;
+  width: 30px;
+  height: 30px;
+}
+
+.links{
+  display: flex;
+  margin-left: 70%;
 }

@@ -3,11 +3,14 @@ import Arrow from './arrow.js';
 import {hero} from '../index.js';
 // import UtilCollision from './util';
 
-let gravity = 1;
+//initialize
+
+let gravity = 0.2;
 // let friction = 1;
 let minRadius = 6;
 let maxRadius = 20;
-
+let maxdx = 8;
+let maxdy = 8;
 
 
 
@@ -95,7 +98,7 @@ shotByArrow(arrow) {
   }
 
   splitToBalls(){
-    if (this.splitCount > 2) {
+    if (this.splitCount > 1) {
       return;
     }
 
