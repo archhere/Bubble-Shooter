@@ -1,70 +1,55 @@
-# Bubble Shooter
+# Bubble Shooter - a shooting game in which you need to shoot toxic bubbles to survive
 
 [Live Demo](https://archhere.github.io/Bubble-Shooter/)
 
 ### Background and Overview
 
- Bubble Shooter is a clone of the Bubble Struggle arcade game.The player controls Travis, a scientist whose experiments go wrong as he becomes trapped in a Bubble world. The goal of the game is to clear the incoming bubble assault. The more bubbles destroyed, the more points scored. A player wins when there are no bubbles remaining on the playing field. The character gets 3 lifes and loses a life everytime a bubble hits him.
+ Bubble Shooter is a clone of the Bubble Struggle arcade game.The player controls Travis, a scientist whose experiments go wrong as he becomes trapped in a Bubble world. The goal of the game is to clear the incoming bubble assault. The more bubbles destroyed, the more points scored. A player wins when there are no bubbles remaining on the playing field. The character gets 3 lives and loses a life everytime a bubble hits him.
  
-### Functionality & MVP
+### Game features
 
-In Bubble-Shooter, there will be :
+There are 3 levels to the game. If the player wins, he moves on to the next level. If he loses, he starts from the beginning. For the truly enthusiastic player, after completing all the 3 levels, I have implemented a harder version of the 3 levels with the bubbles attacking faster and faster.
  
- - [ ] A control modal describing the rules of the game
- - [ ] The user is given a specific weapon to shoot. 
- - [ ] Bubbles explode when shot
- - [ ] The player loses a life if any bubble drops down on him.
+                                                       Level 1
  
- ### Wireframes
+ ![](assets/images/level1screen.png)
  
- Bubble-shooter is a single screen app. The screen will contain a modal with the game rules and nav links to the Github, my LinkedIn.The player can move left and right to shoot the bubbles. 
-  
-![](https://res.cloudinary.com/archhere/image/upload/v1529388733/Untitled_Diagram.jpg)
+ ### Player Life
  
-![](https://res.cloudinary.com/archhere/image/upload/v1529468064/Screen_Shot_2018-06-19_at_9.13.42_PM.png)
+ The player starts each level with 3 lives. Every time a bubble touches him, he loses a life. I used a simple heart image to indicate the current life status of the player.
  
+ ### Gravity
  
- ### Architecture and Technologies
+ I generated the effect of the bubbles falling, by adding a velocity (represented by dx,dy) and then adding gravity to create the effect of the bubble picking up speed as it falls down.
  
- I will be using the below technologies
+ ```javascript
+ update(canvas,c,arrow){
+    if(this.y+this.currentRadius+this.dy > canvas.height-5){
+      this.dy = -this.dy;
+    } else {
+      this.dy += this.gravity;
+    }
+    if(this.x + this.currentRadius + this.dx > canvas.width-5 || this.x - this.currentRadius <= 0){
+      this.dx = -this.dx;
+    }
+    this.x += this.dx;
+    this.y += this.dy;
 
- * Vanilla JavaScript for overall structure and game logic,
- * HTML5 Canvas for DOM manipulation and rendering,
- * Webpack to bundle and serve up the various scripts.
- * Web Audio API for sound generation (while shooting the bubbles etc)
+    this.draw(c);
+    etc..
+  ```
+ ### Collision detection
+ 
+ I implemented collision detection in 2 places - when the bubble is hit by arrow  - when the user is hit by bubble
+ For bubble and arrow, I implemented collision detection algorithm between rectangle and circle. For bubble and player, I created a box around the player and implemented collision detection algorithm between rectangle and circle.
 
-### Timeline
-  
-  #### Weekend:
-
- * Create the basic setup and generate sprites using canvas. Do some research on collisions,sprite creation, animation and explosions (popping action of the bubble) in JS. 
- * Try to create a grid setup for the game
-
-  #### Day 1:
-
- * Apply basic styling to the background and user controls (including the modal to describe the functionality). 
- * Add motion to the bubbles and collision  animation.
- * Make sure that the controls are smooth and the bubbles fall down in a managable pace. 
-
-  #### Day 2:
-
- * Add keyboard movements to control the players action.
- * When the player shoots a bubble, it should pop.
-
-
-  #### Day 3:
-
- * Allow the user to accrue points for each bubble that gets cleared.
- * Build multiple levels by increasing the number of bubbles, how fast they come down or even add other objects like fruits or bugs.
-
-
-  #### Day 4:
-
- * Style the app, making it polished and professional. 
-
+ ### Splitting the bubbles
+ 
+ The bubbles split into 2 smaller bubbles when they are shot at. Each bubble splits into smaller bubbles upto 2 times.
+ 
  ### Bonus Features
  
- * Add a timer to the levels.
- * Add a variety of audio for each level.
- * Add a different background for each level - Underwater, space etc.
+ * Add a pause button
+ * Add a background music to the game.
+ * Add more levels.
 
