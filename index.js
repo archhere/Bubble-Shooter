@@ -131,11 +131,8 @@ function loseLife(){
     }
 }
 
-
-
-
 function startGame(e){
-    if (e.keyCode === 13){
+    if (e.keyCode === 13 && IsGameOver === true){
       if(won===true){
         won = false;
         levels.countofbubbles++;
@@ -212,8 +209,6 @@ function animate(){
     updateLevel(ctx);
     heroLife();
 
-  } else if (GamePaused === true){
-    pauseGame();
   }
 
   else{

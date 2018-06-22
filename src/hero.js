@@ -28,13 +28,13 @@ class Hero{
 move(e){
   if(e.keyCode === 39) {
     if(this.posX<=770){
-    this.posX += 10;
+    this.posX += 20;
     this.framepic = 0;
     }
   }
   else if(e.keyCode === 37){
     if(this.posX>=0){
-      this.posX-=10;
+      this.posX-=20;
       this.framepic = 56;
     }
 

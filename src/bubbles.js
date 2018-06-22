@@ -42,7 +42,6 @@ class Ball{
   update(canvas,c,arrow){
     if(this.y+this.currentRadius+this.dy > canvas.height-5){
       this.dy = -this.dy;
-      // this.dy = -this.dy * friction;
     } else {
       this.dy += this.gravity;
     }
@@ -73,6 +72,9 @@ shotByArrow(arrow) {
           {
               hero.points++;
               this.isHit = true;
+              this.pop.pause();
+              this.pop.currentTime = 0;
+              this.pop.play();
               arrow.liveArr=false;
           }
           else if (Math.sqrt((this.x - arrow.x) * (this.x - arrow.x) +
@@ -84,8 +86,6 @@ shotByArrow(arrow) {
               this.pop.pause();
               this.pop.currentTime = 0;
               this.pop.play();
-              // this.pop.pause();
-              // this.pop.currentTime = 0;
               arrow.liveArr=false;
           }
       }
@@ -107,14 +107,18 @@ shotByArrow(arrow) {
       posX2 = this.x;
     }
 
-    let ball1 = new Ball(posX1, this.y + 3,this.randomIntFromRange(-2,2),this.randomIntFromRange(-2,2),this.radius,this.color);
-    let ball2 = new Ball(posX2 + 50, this.y + 3,this.randomIntFromRange(-2,2),this.randomIntFromRange(-2,2),this.radius,this.color);
+    let ball1 = new Ball(posX1, this.y - 3,this.randomIntFromRange(-2,2),this.randomIntFromRange(-2,2),this.radius,this.color);
+    let ball2 = new Ball(posX2 + 50, this.y - 3,this.randomIntFromRange(-2,2),this.randomIntFromRange(-2,2),this.radius,this.color);
 
     ball1.splitCount=this.splitCount+1;
     ball2.splitCount=this.splitCount+1;
     this.isHit = false;
     ball1.currentRadius = this.radius*(5-ball1.splitCount);
     ball2.currentRadius = this.radius*(5-ball2.splitCount);
+    console.log(posX1);
+    console.log(posX2);
+    console.log(this.y-3);
+    
     return [ball1,ball2];
   }
 
