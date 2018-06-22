@@ -46,7 +46,7 @@ class Ball{
     } else {
       this.dy += this.gravity;
     }
-    if(this.x + this.currentRadius + this.dx > canvas.width-2 || this.x - this.currentRadius <= 0){
+    if(this.x + this.currentRadius + this.dx > canvas.width-5 || this.x - this.currentRadius <= 0){
       this.dx = -this.dx;
     }
     this.x += this.dx;

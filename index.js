@@ -46,6 +46,7 @@ let splitballs;
 export let arr = new Arrow(canvas);
 export let hero;
 let IsGameOver=false;
+let GamePaused = false;
 let backgrd = new Image();
 let images = ['./assets/images/level1.jpg',
 './assets/images/level2.jpg','./assets/images/level3.jpg'];
@@ -130,6 +131,9 @@ function loseLife(){
     }
 }
 
+
+
+
 function startGame(e){
     if (e.keyCode === 13){
       if(won===true){
@@ -208,6 +212,8 @@ function animate(){
     updateLevel(ctx);
     heroLife();
 
+  } else if (GamePaused === true){
+    pauseGame();
   }
 
   else{
