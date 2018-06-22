@@ -16,11 +16,11 @@ class Hero{
     this.rightMove = false;
     this.ctx = ctx;
     this.sprite = new Image();
-    this.sprite.src = "player.png";
+    this.sprite.src = "assets/images/player.png";
     this.framepic = 111;
     this.points = points;
     this.lifeImg = new Image();
-    this.lifeImg.src = 'heart1.png';
+    this.lifeImg.src = 'assets/images/heart1.png';
   }
 
 //

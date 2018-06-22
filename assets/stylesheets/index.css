@@ -1,10 +1,7 @@
 canvas {
-  border: 5px solid black;
+  border: 1px solid black;
   border-radius: 5px;
-  /* background: url('https://res.cloudinary.com/archhere/image/upload/v1529465925/2d-game-backgrounds-10024_imgs_10024_4.jpg'); */
-  /* background: url('https://res.cloudinary.com/archhere/image/upload/v1529467160/xaxas.jpg'); */
-  left: 50px;
-  width: 70%
+  width: 100%
 }
 
 body{
@@ -12,45 +9,107 @@ body{
 }
 
 .outer{
-  border: 1px solid black;
+  border: 1px solid lightgray;
   display: flex;
   flex-direction: column;
-  padding: 20px;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   border-radius: 5px;
-  width: 70%;
-  /* background: black;
-  color:white; */
+  width: 50%;
+  font-family: 'Roboto';
+  line-height: 1.8;
+  letter-spacing: -.4px;
+  color: black;
+  background: #E9DCCD;
+}
+.canvasandcontrols{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.i{
-  color: red;
+.left{
+  display: flex;
 }
 
+h1{
+  text-align: center;
+}
 
-/* #hero{
-  color: "red";
-  width: 20px;
-  height: 20px;
-  position: absolute;
-} */
+.controls{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  font-family: 'Roboto';
+  line-height: 1.8;
+  letter-spacing: -.4px;
+      color: black;
+}
+
+.leftkey{
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-family: sans-serif;
+}
+
+.rightkey{
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-family: sans-serif;
+}
+
+.space{
+  font-weight: 700;
+  font-family: sans-serif;
+}
+
+.key{
+  font-weight: bold;
+  margin-right: 20px;
+  border: 1px solid #F45F4E;
+  background: #F45F4E;
+  color: black;
+  border-radius: 5px;
+}
+
+.controls h3{
+  text-align: center;
+}
+
+.spacebar{
+  border: 1px solid #F45F4E;
+  background: #F45F4E;
+  color: black;
+  margin-right: 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-weight: 700;
+}
+
+.spaceouter{
+  display: flex;
+  justify-content: space-between;
+}
 
 
 #github img{
-  color: red;
   width: 30px;
   height: 30px;
+  padding-right: 20px;
 
 }
 
 #linkedin img{
-  color: red;
   width: 30px;
   height: 30px;
 }
 
 .links{
   display: flex;
-  margin-left: 70%;
+
 }

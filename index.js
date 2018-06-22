@@ -16,6 +16,7 @@ addEventListener("keydown",  (e)=>(startGame(e)), false);
 addEventListener("keydown", (e)=>(hero.move(e)), false);
 addEventListener("keyup", (e)=>(hero.move(e)), false);
 addEventListener("keypress", (e)=>(hero.shoot(e)), false);
+// let pop = new Audio('./assets/sounds/pop.wav');
 
 let colors = [
   '#FF005D',
@@ -66,20 +67,20 @@ for (let i = 1; i <= hero.lives; i++) {
 
 function getScore(c){
   c.font = "30px serif";
-  c.fillStyle = "red";
+  c.fillStyle = "#F45F4E";
   c.fillText(`SCORE: ${hero.points}` , 10 , 30);
 }
 
 function GameOver(c){
   c.font = "30px serif";
-  c.fillStyle = "red";
-  c.fillText(`You lost! You scored ${hero.points}` , 100 , 300);
-  c.fillText('Press enter to play again', 300 , 400);
+  c.fillStyle = "#F45F4E";
+  c.fillText(`You lost! You scored ${hero.points}` , 300 , 280);
+  c.fillText('Press enter to play again', 300 , 310);
 }
 
 function gameWon(c){
     c.font = "30px serif";
-    c.fillStyle = "red";
+    c.fillStyle = "#F45F4E";
     c.fillText(`You won! Your score was ${hero.points}. Press enter to play again` , 100 , 300);
   }
 

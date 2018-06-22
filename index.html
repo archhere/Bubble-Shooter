@@ -4,25 +4,54 @@
     <meta charset="utf-8">
     <title>Bubble Shooter</title>
     <link rel="stylesheet" type="text/css" href="./assets/stylesheets/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Spirax" rel="stylesheet">
   </head>
   <body>
-
-
    <div class="outer">
-     <div align="center">
-        <h1>Bubble Trouble</h1>
+     <!-- <div class="outercontrols"> -->
+      <div>
+        <h1>Bubble Shooter</h1>
       </div>
-      <canvas id="canvas"></canvas>
+          <audio controls loop hidden="true" autoplay="true" id="audo">
+          <source src="./assets/images/music.mp3" type="audio/mpeg">
+          </audio>
+        <div class="controls">
+        <div class="spaceouter">
+          <div class="spacebar"> Spacebar </div>
+          <div class="space">To shoot</div>
+        </div></br>
+        <div class="leftkey">
+          <div class="key"> ← </div>
+          <div> Go Left </div>
+        </div></br>
+        <div class="rightkey">
+          <div class="key"> ➝ </div>
+          <div>Go Right</div>
+        </div></br>
+        <div class = "links">
+          <a href="https://github.com/archhere" id="github" target="_blank">
+                <img src="assets/images/github.png"/>
+          </a>
+          <a href="https://www.linkedin.com/in/archana-kannan-77238397/" id="linkedin" target="_blank">
+                <img src="assets/images/linkedin.png"/>
+          </a>
+        </div>
+      </div>
+      <!-- </div> -->
+      <div class="canvasandcontrols">
+        <canvas id="canvas"></canvas>
+        <!-- <div class="controls">
+          <p> Controls</p>
+          <p> Move with the arrow keys.</p>
+          <p> Shoot your harpoon with the spacebar.</p>
+          <p> Press 'p' to Pause.</p>
+        </div> -->
+
+
+      </div>
       <script type="text/javascript" src="lib/bundle.js">
       </script>
-      <div class = "links">
-        <a href="https://github.com/archhere" id="github" target="_blank">
-              <img src="github.png"/>
-        </a>
-        <a href="https://www.linkedin.com/in/archana-kannan-77238397/" id="linkedin" target="_blank">
-              <img src="linkedin.png"/>
-        </a>
-      </div>
+
     </div>
   </body>
 </html>

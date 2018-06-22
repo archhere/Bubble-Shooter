@@ -26,6 +26,7 @@ class Ball{
     this.isHit = false;
     this.currentRadius = this.radius*(5-this.splitCount);
     this.gravity = 0.2;
+    this.pop = new Audio('./assets/sounds/pop.wav');
   }
 
   draw(c){
@@ -38,13 +39,13 @@ class Ball{
     c.closePath();
   }
   update(canvas,c,arrow){
-    if(this.y+this.currentRadius+this.dy > canvas.height){
+    if(this.y+this.currentRadius+this.dy > canvas.height-5){
       this.dy = -this.dy;
       // this.dy = -this.dy * friction;
     } else {
       this.dy += this.gravity;
     }
-    if(this.x + this.currentRadius + this.dx > canvas.width || this.x - this.currentRadius <= 0){
+    if(this.x + this.currentRadius + this.dx > canvas.width-2 || this.x - this.currentRadius <= 0){
       this.dx = -this.dx;
     }
     this.x += this.dx;
@@ -71,18 +72,17 @@ shotByArrow(arrow) {
           {
               hero.points++;
               this.isHit = true;
+              this.pop.play();
               arrow.liveArr=false;
-              console.log("Ball isHit : " + this.isHit);
           }
           else if (Math.sqrt((this.x - arrow.x) * (this.x - arrow.x) +
                   (this.y - arrow.y) * (this.y - arrow.y )
               ) <= this.currentRadius
           ) {
               hero.points++;
-              console.log(this);
               this.isHit = true;
+              this.pop.play();
               arrow.liveArr=false;
-              console.log("Ball isHit again : " + this.isHit);
           }
       }
   }

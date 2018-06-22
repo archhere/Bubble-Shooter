@@ -7,6 +7,7 @@ class Arrow{
         this.liveArr = false;
         this.speed = 15;
         this.y_max = 0;
+        this.shot = new Audio('./assets/sounds/arrow.wav');
     }
 
     // getX(){
@@ -19,7 +20,10 @@ class Arrow{
     shoot(x,y){
           this.x=x+25;
           this.y=y;
-        this.liveArr=true;
+          this.liveArr=true;
+          this.shot.pause();
+          this.shot.currentTime = 0;
+          this.shot.play();
     }
 
 
