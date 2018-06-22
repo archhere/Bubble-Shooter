@@ -5,7 +5,9 @@ canvas {
 }
 
 body{
-  margin: 5;
+  display: flex;
+  justify-content: center;
+  /* background: #180d47; */
 }
 
 .outer{

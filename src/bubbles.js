@@ -20,6 +20,7 @@ class Ball{
     this.y = y;
     this.dx = dx;
     this.dy = dy;
+    this.mindx = 0;
     this.radius = radius;
     this.color = color;
     this.splitCount = 1;
@@ -80,21 +81,25 @@ shotByArrow(arrow) {
           ) {
               hero.points++;
               this.isHit = true;
+              this.pop.pause();
+              this.pop.currentTime = 0;
               this.pop.play();
+              // this.pop.pause();
+              // this.pop.currentTime = 0;
               arrow.liveArr=false;
           }
       }
   }
 
   splitToBalls(){
-    if (this.splitCount > 1) {
+    if (this.splitCount > 2) {
       return;
     }
 
     let posX1;
     let posX2;
 
-    if (this.x > 50 && this.x < 720){
+    if (this.x > 50 && this.x < 690){
         posX1 = this.x - 50;
         posX2 = this.x + 50;
     } else{
