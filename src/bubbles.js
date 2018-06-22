@@ -118,7 +118,7 @@ shotByArrow(arrow) {
     console.log(posX1);
     console.log(posX2);
     console.log(this.y-3);
-    
+
     return [ball1,ball2];
   }
 
