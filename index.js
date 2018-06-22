@@ -42,18 +42,27 @@ export let hero;
 let IsGameOver=false;
 let backgrd = new Image();
 let image = "./level1.jpg";
-backgrd.src = image;
+// backgrd.src = image;
 
-const init = () => {
+
+
+let images = ['./level1.jpg','./level2.jpg','./level3.jpg'];
+let levels = {
+  currentLevel: 1,
+  countofbubbles: 1,
+  bkgrimg: images[0]
+};
+backgrd.src = levels.bkgrimg;
+
+const init = (level) => {
   bubbleArray = [];
-  for(let i=0; i < 1; i++) {
+  for(let i=0; i < level.countofbubbles; i++) {
     console.log("created new bubbles");
     bubbleArray.push(new Bubbles(
       randomIntFromRange(20,canvas.width-20),
       20,randomIntFromRange(-2,2),randomIntFromRange(-2,2),
       randomIntFromRange(5,8),randomColor(colors)));
   }
-  console.log("bubbleaArray",bubbleArray);
 };
 hero = new Hero(canvas,ctx,0);
 
@@ -71,6 +80,12 @@ function getScore(c){
   c.fillText(`SCORE: ${hero.points}` , 10 , 30);
 }
 
+function updateLevel(c){
+  c.font = "30px serif";
+  c.fillStyle = "#F45F4E";
+  c.fillText(`LEVEL: ${levels.currentLevel}` , 350 , 30);
+}
+
 function GameOver(c){
   c.font = "30px serif";
   c.fillStyle = "#F45F4E";
@@ -81,10 +96,10 @@ function GameOver(c){
 function gameWon(c){
     c.font = "30px serif";
     c.fillStyle = "#F45F4E";
-    c.fillText(`You won! Your score was ${hero.points}. Press enter to play again` , 100 , 300);
+    c.fillText(`You won! Your score was ${hero.points}.` , 300 , 280);
+    c.fillText('Press enter to go to the next level.' , 300 , 310);
+
   }
-
-
 
 function loseLife(){
     if (hero.lives > 0) {
@@ -98,12 +113,20 @@ function loseLife(){
 function startGame(e){
     if (e.keyCode === 13){
       if(won===true){
-        init();
+        levels.countofbubbles++;
+        levels.currentLevel++;
+        let currentIdx = images.indexOf(levels.bkgrimg);
+        levels.bkgrimg = images[currentIdx+1];
+        console.log("bkgr change",levels.bkgrimg);
+        backgrd.src = levels.bkgrimg;
+        init(levels);
         IsGameOver = false;
+        let temp = hero.points;
+        hero = new Hero(canvas,ctx,temp);
         won = false;
       }
       else {
-        init();
+        init(levels);
         IsGameOver = false;
         hero = new Hero(canvas,ctx,0);
         arr = new Arrow();
@@ -133,7 +156,7 @@ function animate(){
         }
         if(hero.hit){
           loseLife();
-          if (IsGameOver === false) init();
+          if (IsGameOver === false) init(levels);
           break;
         }
       }
@@ -146,6 +169,7 @@ function animate(){
     arr.update();
     hero.draw();
     getScore(ctx);
+    updateLevel(ctx);
     heroLife();
 
   }
@@ -154,7 +178,7 @@ function animate(){
     GameOver(ctx);
   }
 }
-init();
+init(levels);
 animate();
 
 
