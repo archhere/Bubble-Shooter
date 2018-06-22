@@ -13,9 +13,9 @@ let innerHeight = 600;
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 addEventListener("keydown",  (e)=>(startGame(e)), false);
-document.addEventListener("keydown", (e)=>(hero.move(e)), false);
-document.addEventListener("keyup", (e)=>(hero.move(e)), false);
-document.addEventListener("keypress", (e)=>(hero.shoot(e)), false);
+addEventListener("keydown", (e)=>(hero.move(e)), false);
+addEventListener("keyup", (e)=>(hero.move(e)), false);
+addEventListener("keypress", (e)=>(hero.shoot(e)), false);
 
 let colors = [
   '#FF005D',
@@ -73,14 +73,14 @@ function getScore(c){
 function GameOver(c){
   c.font = "30px serif";
   c.fillStyle = "red";
-  c.fillText(`You lost! You scored ${hero.points}` , 300 , 300);
+  c.fillText(`You lost! You scored ${hero.points}` , 100 , 300);
   c.fillText('Press enter to play again', 300 , 400);
 }
 
 function gameWon(c){
     c.font = "30px serif";
     c.fillStyle = "red";
-    c.fillText(`You won! Your score was ${hero.points}. Press enter to play again` , 100 , 400);
+    c.fillText(`You won! Your score was ${hero.points}. Press enter to play again` , 100 , 300);
   }
 
 
@@ -96,11 +96,19 @@ function loseLife(){
 
 function startGame(e){
     if (e.keyCode === 13){
+      if(won===true){
+        init();
+        IsGameOver = false;
+        won = false;
+      }
+      else {
         init();
         IsGameOver = false;
         hero = new Hero(canvas,ctx,0);
         arr = new Arrow();
         animate();
+      }
+
       }
 }
 

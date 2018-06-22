@@ -5,7 +5,7 @@ import {hero} from '../index.js';
 
 //initialize
 
-let gravity = 0.2;
+// let gravity = 0.2;
 // let friction = 1;
 let minRadius = 6;
 let maxRadius = 20;
@@ -25,6 +25,7 @@ class Ball{
     this.splitCount = 1;
     this.isHit = false;
     this.currentRadius = this.radius*(5-this.splitCount);
+    this.gravity = 0.2;
   }
 
   draw(c){
@@ -37,16 +38,13 @@ class Ball{
     c.closePath();
   }
   update(canvas,c,arrow){
-
-
-
     if(this.y+this.currentRadius+this.dy > canvas.height){
       this.dy = -this.dy;
       // this.dy = -this.dy * friction;
     } else {
-      this.dy += gravity;
+      this.dy += this.gravity;
     }
-    if(this.x + this.currentRadius + this.dx+1 > canvas.height || this.x - this.currentRadius-1 <= 0){
+    if(this.x + this.currentRadius + this.dx > canvas.width || this.x - this.currentRadius <= 0){
       this.dx = -this.dx;
     }
     this.x += this.dx;

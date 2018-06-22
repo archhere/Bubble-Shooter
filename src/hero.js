@@ -1,8 +1,5 @@
 import {arr} from '../index.js';
 
-
-
-
 const FRAME_LIMIT = 2;
 
 class Hero{
@@ -24,12 +21,7 @@ class Hero{
     this.points = points;
     this.lifeImg = new Image();
     this.lifeImg.src = 'heart1.png';
-
-    
   }
-
-
-
 
 //
 move(e){
