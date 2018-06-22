@@ -76,30 +76,42 @@ for (let i = 1; i <= hero.lives; i++) {
 
 function getScore(c){
   c.font = "30px serif";
-  c.fillStyle = "#F45F4E";
+  if (levels.currentLevel === 1) c.fillStyle = "#F45F4E";
+  else c.fillStyle = "red";
   c.fillText(`SCORE: ${hero.points}` , 10 , 30);
 }
 
 function updateLevel(c){
   c.font = "30px serif";
-  c.fillStyle = "#F45F4E";
+  if (levels.currentLevel === 1) c.fillStyle = "#F45F4E";
+  else c.fillStyle = "red";
   c.fillText(`LEVEL: ${levels.currentLevel}` , 350 , 30);
 }
 
 function GameOver(c){
   c.font = "30px serif";
-  c.fillStyle = "#F45F4E";
+  if (levels.currentLevel === 1) c.fillStyle = "#F45F4E";
+  else c.fillStyle = "red";
   c.fillText(`You lost! You scored ${hero.points}` , 300 , 280);
   c.fillText('Press enter to play again', 300 , 310);
 }
 
 function gameWon(c){
     c.font = "30px serif";
-    c.fillStyle = "#F45F4E";
+    if (levels.currentLevel === 1) c.fillStyle = "#F45F4E";
+    else c.fillStyle = "red";
     c.fillText(`You won! Your score was ${hero.points}.` , 300 , 280);
     c.fillText('Press enter to go to the next level.' , 300 , 310);
-
   }
+
+function gameOverfinal(c){
+  c.font = "30px serif";
+  if (levels.currentLevel === 1) c.fillStyle = "#F45F4E";
+  else c.fillStyle = "black";
+  c.fillText(`You won! Your score was ${hero.points}.` , 300 , 280);
+  c.fillText('You have completed all the levels.' , 300 , 310);
+  c.fillText('Press enter if you want to play a faster version of the game.' , 300 , 330);
+}
 
 function loseLife(){
     if (hero.lives > 0) {
@@ -113,6 +125,7 @@ function loseLife(){
 function startGame(e){
     if (e.keyCode === 13){
       if(won===true){
+        won = false;
         levels.countofbubbles++;
         levels.currentLevel++;
         let currentIdx = images.indexOf(levels.bkgrimg);
@@ -123,13 +136,18 @@ function startGame(e){
         IsGameOver = false;
         let temp = hero.points;
         hero = new Hero(canvas,ctx,temp);
-        won = false;
+        console.log("reaches here");
       }
       else {
+        levels.currentLevel = 1;
+        levels.countofbubbles = 1;
+        levels.bkgrimg = images[0];
+        backgrd.src = levels.bkgrimg;
         init(levels);
         IsGameOver = false;
         hero = new Hero(canvas,ctx,0);
         arr = new Arrow();
+        console.log("start from beginning");
         animate();
       }
 
@@ -155,6 +173,9 @@ function animate(){
           hero.hitByBubble(bubbleArray[idx]);
         }
         if(hero.hit){
+          hero.killed.pause();
+          hero.killed.currentTime = 0;
+          hero.killed.play();
           loseLife();
           if (IsGameOver === false) init(levels);
           break;
@@ -162,10 +183,13 @@ function animate(){
       }
 
       if (bubbleArray.length === 0){
-        won = true;
-        gameWon(ctx);
+        if (levels.currentLevel === 3) {
+          gameOverfinal(ctx);
+        } else {
+          won = true;
+          gameWon(ctx);
+          }
         }
-
     arr.update();
     hero.draw();
     getScore(ctx);

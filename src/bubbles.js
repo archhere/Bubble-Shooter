@@ -72,7 +72,6 @@ shotByArrow(arrow) {
           {
               hero.points++;
               this.isHit = true;
-              this.pop.play();
               arrow.liveArr=false;
           }
           else if (Math.sqrt((this.x - arrow.x) * (this.x - arrow.x) +

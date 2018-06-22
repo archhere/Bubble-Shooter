@@ -5,7 +5,7 @@ const FRAME_LIMIT = 2;
 class Hero{
   constructor(canvas,ctx,points){
 
-    this.lives = 1;
+    this.lives = 3;
     this.width = 56;
     this.height = 55;
     this.hit = false;
@@ -21,6 +21,7 @@ class Hero{
     this.points = points;
     this.lifeImg = new Image();
     this.lifeImg.src = 'assets/images/heart1.png';
+    this.killed = new Audio('./assets/sounds/pain.wav');
   }
 
 //
