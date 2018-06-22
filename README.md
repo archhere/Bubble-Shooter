@@ -10,17 +10,11 @@
 
 There are 3 levels to the game. If the player wins, he moves on to the next level. If he loses, he starts from the beginning. For the truly enthusiastic player, after completing all the 3 levels, I have implemented a harder version of the 3 levels with the bubbles attacking faster and faster.
  
- Level 1
+             Level 1
  
  ![](assets/images/level1screen.png)
  
- Level 2
  
-  ![](assets/images/level2screen.png)
-  
-  Level 3
- 
-  ![](assets/images/level3screen.png)
 
  ### Bonus Features
  
