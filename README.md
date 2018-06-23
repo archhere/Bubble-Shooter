@@ -8,7 +8,7 @@
  
 ### Game features
 
-There are 3 levels to the game. If the player wins, he moves on to the next level. If he loses, he starts from the beginning. For the truly enthusiastic player, after completing all the 3 levels, I have implemented a harder version of the 3 levels with the bubbles attacking faster and faster.
+There are 3 levels to the game. If the player wins, he moves on to the next level. If he loses, he starts from the beginning. Each level has increasing number of bubbles.
  
                                                        Level 1
  
