@@ -96,7 +96,7 @@ shotByArrow(arrow) {
   }
 
   splitToBalls(){
-    if (this.splitCount > 2) {
+    if (this.splitCount > 1) {
       return;
     }
 
@@ -115,7 +115,7 @@ shotByArrow(arrow) {
     }
 
     let du = randomIntFromRange(-2,2);
-    let dv = randomIntFromRange(2,3.5);
+    let dv = randomIntFromRange(0,2);
 
     let ball1 = new Ball(posX1, this.y + 40,du,dv,this.radius,this.color);
     let ball2 = new Ball(posX2 + 50, this.y + 20,du,dv,this.radius,this.color);
