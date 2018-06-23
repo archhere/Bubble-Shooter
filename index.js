@@ -46,6 +46,7 @@ let splitballs;
 export let arr = new Arrow(canvas);
 export let hero;
 let IsGameOver=false;
+let finalGameOver = false;
 let GamePaused = false;
 let backgrd = new Image();
 let images = ['./assets/images/level1.jpg',
@@ -58,14 +59,28 @@ let levels = {
 backgrd.src = levels.bkgrimg;
 
 const init = (level) => {
+  let ranges = [-2.0,-2.1,-2.2,-2.3,-2.4,-2.5,-2.6,-2.7,-2.8,-2.9,
+    -1.0,-1.1,-1.2,-1.3,-1.4,-1.5,-1.6,-1.7,-1.8,-1.9,2.0,2.1,2.2,
+    2.3,2.4,2.5,2.6,2.7,2.8,2.9,1.0,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9];
+  console.log("init");
   bubbleArray = [];
   for(let i=0; i < level.countofbubbles; i++) {
     console.log("created new bubbles");
+    let dx = randomIntFromRange(-2,2);
+    let dy = randomIntFromRange(-2,2);
+    let radius = randomIntFromRange(5,8);
+    let x = randomIntFromRange(10+radius,canvas.width-50);
+    if (hero.hit === false){
+      if (dx === 0){
+        console.log("true its 0");
+        dx = ranges[Math.floor(Math.random() * ranges.length)];
+      }
+    }
+    console.log('vel',dx);
     bubbleArray.push(new Bubbles(
-      randomIntFromRange(20,canvas.width-20),
-      20,randomIntFromRange(0.1,2),randomIntFromRange(-2,2),
-      randomIntFromRange(5,8),randomColor(colors)));
+      x,40,dx,dy,radius,randomColor(colors)));
   }
+  console.log("new bubbles list",bubbleArray);
 };
 hero = new Hero(canvas,ctx,0);
 
@@ -117,8 +132,7 @@ function gameOverfinal(c){
   else c.fillStyle = "red";
   c.fillText(`You won! Your score was ${hero.points}.` , 210 , 280);
   c.fillText('You have completed all the levels.' , 210 , 310);
-  c.fillText('Press enter if you want to play' , 210 , 340);
-  c.fillText('a faster version of the game.' , 210 , 370);
+  c.fillText('Press enter if you want to play again.' , 210 , 340);
 }
 
 function loseLife(){
@@ -131,9 +145,10 @@ function loseLife(){
     }
 }
 
+
 function startGame(e){
-    if (e.keyCode === 13 && (IsGameOver === true || won === true)){
-      if(won===true){
+    if (e.keyCode === 13 && (IsGameOver === true || won === true || finalGameOver === true)){
+      if(won===true && finalGameOver === false){
         won = false;
         levels.countofbubbles++;
         levels.currentLevel++;
@@ -147,7 +162,20 @@ function startGame(e){
         hero = new Hero(canvas,ctx,temp);
         console.log("reaches here");
       }
+      else if(finalGameOver) {
+        console.log("calledfinal");
+        levels.currentLevel = 1;
+        levels.countofbubbles = 1;
+        levels.bkgrimg = images[0];
+        backgrd.src = levels.bkgrimg;
+        init(levels);
+        won = false;
+        IsGameOver = false;
+        finalGameOver = false;
+        hero = new Hero(canvas,ctx,0);
+      }
       else {
+        console.log("called");
         levels.currentLevel = 1;
         levels.countofbubbles = 1;
         levels.bkgrimg = images[0];
@@ -196,6 +224,7 @@ function animate(){
 
       if (bubbleArray.length === 0){
         if (levels.currentLevel === 3) {
+          finalGameOver = true;
           gameOverfinal(ctx);
         } else {
           won = true;

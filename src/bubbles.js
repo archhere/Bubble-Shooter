@@ -12,6 +12,10 @@ let maxRadius = 20;
 let maxdx = 8;
 let maxdy = 8;
 
+function randomIntFromRange(min,max){
+  return Math.floor(Math.random() * (max-min+1) + min);
+}
+
 
 
 class Ball{
@@ -45,7 +49,7 @@ class Ball{
     } else {
       this.dy += this.gravity;
     }
-    if(this.x + this.currentRadius + this.dx > canvas.width-5 || this.x - this.currentRadius <= 0){
+    if(this.x + this.currentRadius + this.dx > canvas.width || this.x <= 0){
       this.dx = -this.dx;
     }
     this.x += this.dx;
@@ -102,23 +106,45 @@ shotByArrow(arrow) {
     if (this.x > 50 && this.x < 690){
         posX1 = this.x - 50;
         posX2 = this.x + 50;
-    } else{
-      posX1 = this.x;
-      posX2 = this.x;
+    } else if (this.x >= 690){
+      posX1 = 760;
+      posX2 = 740;
+    } else if (this.x <= 50){
+      posX1 = 60;
+      posX2 = 40;
     }
 
-    let ball1 = new Ball(posX1, this.y - 3,this.randomIntFromRange(-2,2),this.randomIntFromRange(-2,2),this.radius,this.color);
-    let ball2 = new Ball(posX2 + 50, this.y - 3,this.randomIntFromRange(-2,2),this.randomIntFromRange(-2,2),this.radius,this.color);
+    let du = randomIntFromRange(-2,2);
+    let dv = randomIntFromRange(2,3.5);
+
+    let ball1 = new Ball(posX1, this.y + 40,du,dv,this.radius,this.color);
+    let ball2 = new Ball(posX2 + 50, this.y + 20,du,dv,this.radius,this.color);
 
     ball1.splitCount=this.splitCount+1;
     ball2.splitCount=this.splitCount+1;
     this.isHit = false;
     ball1.currentRadius = this.radius*(5-ball1.splitCount);
     ball2.currentRadius = this.radius*(5-ball2.splitCount);
+    ball1.posX1 = ball1.posX1 + 3*ball1.currentRadius;
+    ball2.posX2 = ball2.posX2 + 3*ball2.currentRadius;
+    if (hero.hit === false){
+      if (du <= 0 && posX1<=750){
+        du = 1;
+      } else if (du >= 0 && posX1 > 750) {
+        du = -1;
+      } else if (du <= 0 && posX2<=750) {
+        du = 3.2;
+      } else if (du >= 0 && posX2 > 750){
+        du = -3.6;
+      } else du = randomIntFromRange(-2,2);
+    }
+    ball1.du = du;
+    ball2.du = du;
     console.log(posX1);
     console.log(posX2);
     console.log(this.y-3);
-
+    console.log(du);
+    console.log(dv);
     return [ball1,ball2];
   }
 
