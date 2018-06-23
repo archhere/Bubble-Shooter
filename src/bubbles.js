@@ -115,10 +115,10 @@ shotByArrow(arrow) {
     }
 
     let du = randomIntFromRange(-2,2);
-    let dv = randomIntFromRange(0,2);
+    let dv = randomIntFromRange(-2,2);
 
-    let ball1 = new Ball(posX1, this.y + 40,du,dv,this.radius,this.color);
-    let ball2 = new Ball(posX2 + 50, this.y + 20,du,dv,this.radius,this.color);
+    let ball1 = new Ball(posX1, 60,du,dv,this.radius,this.color);
+    let ball2 = new Ball(posX2 + 50, 100,du,dv,this.radius,this.color);
 
     ball1.splitCount=this.splitCount+1;
     ball2.splitCount=this.splitCount+1;
