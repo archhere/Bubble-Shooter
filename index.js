@@ -11,6 +11,7 @@ let ctx = canvas.getContext('2d');
 let won = false;
 let innerWidth = 800;
 let innerHeight = 600;
+// let innerHeight = screen.height-200;
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 addEventListener("keydown",  (e)=>(startGame(e)), false);
@@ -57,12 +58,14 @@ let levels = {
   bkgrimg: images[0]
 };
 backgrd.src = levels.bkgrimg;
-
+console.log(levels.currentLevel);
 const init = (level) => {
   let ranges = [-2.0,-2.1,-2.2,-2.3,-2.4,-2.5,-2.6,-2.7,-2.8,-2.9,
     -1.0,-1.1,-1.2,-1.3,-1.4,-1.5,-1.6,-1.7,-1.8,-1.9,2.0,2.1,2.2,
     2.3,2.4,2.5,2.6,2.7,2.8,2.9,1.0,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9];
   console.log("init");
+  console.log(level.currentLevel);
+  document.body.classList.add("test");
   bubbleArray = [];
   for(let i=0; i < level.countofbubbles; i++) {
     console.log("created new bubbles");
