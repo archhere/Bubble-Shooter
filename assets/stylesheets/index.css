@@ -78,6 +78,8 @@ h1{
   height: 20%;
   color: black;
   border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .controls h3{
@@ -93,6 +95,8 @@ h1{
   border-radius: 5px;
   box-sizing: border-box;
   font-weight: 700;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .spaceouter{
