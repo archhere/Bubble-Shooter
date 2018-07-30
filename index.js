@@ -11,7 +11,9 @@ let ctx = canvas.getContext('2d');
 let won = false;
 let innerWidth = 800;
 let innerHeight = 600;
-// let innerHeight = screen.height-200;
+// let innerHeight = screen.height-550;
+
+
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 addEventListener("keydown",  (e)=>(startGame(e)), false);
@@ -100,14 +102,14 @@ for (let i = 1; i <= hero.lives; i++) {
 }
 
 function getScore(c){
-  c.font = "30px serif";
+  c.font = "30px 'Roboto'";
   if (levels.currentLevel === 1) c.fillStyle = "#F45F4E";
   else c.fillStyle = "red";
   c.fillText(`SCORE: ${hero.points}` , 10 , 30);
 }
 
 function updateLevel(c){
-  c.font = "30px serif";
+  c.font = "30px 'Roboto'";
   if (levels.currentLevel === 1) c.fillStyle = "#F45F4E";
   else c.fillStyle = "red";
   c.fillText(`LEVEL: ${levels.currentLevel}` , 350 , 30);
