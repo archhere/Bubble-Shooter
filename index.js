@@ -228,7 +228,7 @@ function animate(){
       }
 
       if (bubbleArray.length === 0){
-        if (levels.currentLevel === 3) {
+        if (levels.currentLevel === 4) {
           finalGameOver = true;
           gameOverfinal(ctx);
         } else {
