@@ -96,7 +96,7 @@ shotByArrow(arrow) {
   }
 
   splitToBalls(){
-    if (this.splitCount > 2) {
+    if (this.splitCount > 1) {
       return;
     }
 
