@@ -53,7 +53,7 @@ let finalGameOver = false;
 let GamePaused = false;
 let backgrd = new Image();
 let images = ['./assets/images/level1.jpg',
-'./assets/images/level2.jpg','./assets/images/level3.jpg','./assets/images/level4.png'];
+'./assets/images/level2.jpg','./assets/images/level3.jpg','./assets/images/level4.png','./assets/images/level5.gif'];
 let levels = {
   currentLevel: 1,
   countofbubbles: 1,
@@ -228,7 +228,7 @@ function animate(){
       }
 
       if (bubbleArray.length === 0){
-        if (levels.currentLevel === 4) {
+        if (levels.currentLevel === 5) {
           finalGameOver = true;
           gameOverfinal(ctx);
         } else {
