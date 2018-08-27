@@ -52,8 +52,8 @@ let IsGameOver=false;
 let finalGameOver = false;
 let GamePaused = false;
 let backgrd = new Image();
-let images = ['./assets/images/level1.jpg',
-'./assets/images/level2.jpg','./assets/images/level3.jpg','./assets/images/level4.png','./assets/images/level5.gif'];
+let images = ['./assets/images/source.gif',
+'./assets/images/level2.gif','./assets/images/level3.jpg','./assets/images/level4.png','./assets/images/level5.gif'];
 let levels = {
   currentLevel: 1,
   countofbubbles: 1,
